@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something for Motii ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ font-family:Georgia,serif;
+ color:#61394f;
+ background:linear-gradient(145deg,#fff6fa,#f6dceb,#fff0f6);
+ text-align:center;padding:20px;
+}
+main{max-width:650px;margin:8vh auto}
+.card{
+ background:#ffffffd9;padding:30px 22px;
+ border:1px solid #f0cadd;border-radius:24px;
+ box-shadow:0 12px 40px #9d527c18;
+}
+h1{font-size:clamp(36px,8vw,58px);font-weight:normal}
+h2{font-weight:normal;font-size:30px}
+p{font-size:17px;line-height:1.9}
+.heart{font-size:45px;color:#d77da7}
+button{
+ border:0;border-radius:30px;padding:15px 22px;
+ margin:8px;background:#c76e9c;color:white;
+ font-size:15px;cursor:pointer;
+}
+.secondary{background:white;color:#a65380;border:1px solid #e9bfd5}
+.screen{display:none}
+.screen.active{display:block;animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.small{font:12px Arial,sans-serif;color:#987b8c}
+</style>
+</head>
+<body>
+<main>
+<section id="home" class="screen active">
+<div class="heart">✧ ♡ ✧</div>
+<p>A little something, made with care</p>
+<h1>Hey, Motii...</h1>
+<div class="card">
+<p>Please, please listen to my heart once.</p>
+<p>I have a few things I've wanted to tell you.</p>
+<p>Whatever you decide, your choice is yours, and I'll respect it.</p>
+</div>
+<button onclick="show('letter')">Open my heart ♡</button>
+</section>
+
+<section id="letter" class="screen">
+<div class="heart">💌</div>
+<h2>Things I understood a little late</h2>
+<div class="card">
+<p>Dear Motii ❤️</p>
+<p>Mun sabubele tote love kari asichi. Sabubele tote mo first priority re rakhichi. Bas, mu mo feelings thik se bujhiparinathili au tote bujhaiparinathili.</p>
+<p>Honestly, mo pain feelings express kariba tike cringy laguthila. Kintu ebe bujhuchi je feelings thile taku express kariba bhi kete important.</p>
+<p>Past mu change kariparibini, kintu nijaku improve kariparibi. Mo feelings kebala words re nuhen, actions re express karibaku chahunchi.</p>
+<p><i>With honesty, not promises alone. ❤️</i></p>
+</div>
+<button onclick="show('video')">One more thing 🎬</button>
+</section>
+
+<section id="video" class="screen">
+<h2>Just listen to me once</h2>
+<div class="card">
+<p>Mu tote kichhi kahibaku chahunchi. ❤️</p>
+<p>Take your time. Whenever you're comfortable, listen to what I want to say.</p>
+<p class="small">My personal video can be added to the website later.</p>
+</div>
+<button onclick="show('gift')">A little surprise 🎁</button>
+</section>
+
+<section id="gift" class="screen">
+<div class="heart">🎁</div>
+<h2>A little gift for you</h2>
+<div class="card">
+<p>I chose this dress thinking of you, Motii. I imagined you wearing it and smiling. 🌷</p>
+<p>Mu tote au gote chance magibaku chahunchi—not to pressure you, but because I genuinely want one honest conversation and a chance to do better.</p>
+<p>Can we talk once, if you're comfortable?</p>
+</div>
+<button onclick="show('trip')">I'm open to talking ❤️</button>
+<button class="secondary" onclick="show('space')">I need some time 🤍</button>
+<p class="small">Choose only what feels right to you. No pressure.</p>
+</section>
+
+<section id="trip" class="screen">
+<div class="heart">🌅</div>
+<h2>Berhampur, together?</h2>
+<div class="card">
+<p>Thank you for being open to talking, Motii. ❤️</p>
+<p>Jadi tu comfortable thibu, Berhampur re gote din time spend karipariba. Katha heba, buliba, au paraspara katha shuniba.</p>
+<p>We can plan everything together. Nothing is decided unless we're both comfortable.</p>
+<p>Would you be comfortable meeting up?</p>
+</div>
+<button onclick="answer('Open to meeting')">Yes, let's talk 💗</button>
+<button class="secondary" onclick="show('space')">Not right now</button>
+</section>
+
+<section id="space" class="screen">
+<div class="heart">🤍</div>
+<h2>It's okay, Motii.</h2>
+<div class="card">
+<p>Thank you for listening to my heart.</p>
+<p>Take the time and space you need. I respect your decision and won't pressure you for an answer.</p>
+<p>I genuinely wish you happiness. Keep smiling. ❤️</p>
+</div>
+<button onclick="show('end')">Finish ♡</button>
+</section>
+
+<section id="end" class="screen">
+<div class="heart">🦋 ♡ 🦋</div>
+<h1>Thank you, Motii.</h1>
+<div class="card">
+<p>Thank you for giving me a little of your precious time.</p>
+<p>Whatever happens next, I wish you happiness. Take care. ❤️</p>
+</div>
+</section>
+</main>
+
+<script>
+function show(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo(0,0);
+}
+function answer(value){
+ try{localStorage.setItem('motii_response',value)}catch(e){}
+ show('end');
+}
+</script>
+</body>
+</html>
