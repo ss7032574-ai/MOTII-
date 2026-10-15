@@ -3,131 +3,468 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Something for Motii ❤️</title>
+<meta name="theme-color" content="#a9e5ff">
+<title>Motii's Fairytale Garden ✨</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;
- font-family:Georgia,serif;
- color:#61394f;
- background:linear-gradient(145deg,#fff6fa,#f6dceb,#fff0f6);
- text-align:center;padding:20px;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --sky: #bceaff;
+  --blue: #63b8e8;
+  --deep: #245d87;
+  --pink: #ffd9e8;
+  --gold: #e9c77c;
+  --white: #fff;
 }
-main{max-width:650px;margin:8vh auto}
-.card{
- background:#ffffffd9;padding:30px 22px;
- border:1px solid #f0cadd;border-radius:24px;
- box-shadow:0 12px 40px #9d527c18;
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #315d7d;
+  background:
+    radial-gradient(ellipse at 15% 15%, #ffffff 0%, transparent 32%),
+    radial-gradient(ellipse at 85% 30%, #fce7f2 0%, transparent 30%),
+    linear-gradient(160deg, #dff6ff, #a9e0ff 45%, #e5f5ff 75%, #fce8f1);
 }
-h1{font-size:clamp(36px,8vw,58px);font-weight:normal}
-h2{font-weight:normal;font-size:30px}
-p{font-size:17px;line-height:1.9}
-.heart{font-size:45px;color:#d77da7}
-button{
- border:0;border-radius:30px;padding:15px 22px;
- margin:8px;background:#c76e9c;color:white;
- font-size:15px;cursor:pointer;
+
+button { font: inherit; }
+
+#magic {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
 }
-.secondary{background:white;color:#a65380;border:1px solid #e9bfd5}
-.screen{display:none}
-.screen.active{display:block;animation:fade .5s}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.small{font:12px Arial,sans-serif;color:#987b8c}
+
+.sparkle, .petal {
+  position: absolute;
+  top: -35px;
+  animation: fall linear forwards;
+  opacity: .85;
+}
+
+.sparkle {
+  color: white;
+  text-shadow: 0 0 12px #fff, 0 0 22px #6acbff;
+}
+
+.petal {
+  filter: drop-shadow(0 0 5px #fff);
+}
+
+@keyframes fall {
+  0% { transform: translate3d(0,-5vh,0) rotate(0deg); }
+  100% { transform: translate3d(55px,110vh,0) rotate(500deg); }
+}
+
+.glow {
+  animation: heartbeat 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px #ff9ecb);
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.09); }
+}
+
+.moon {
+  position: fixed;
+  top: 35px;
+  right: 25px;
+  font-size: 40px;
+  opacity: .8;
+  filter: drop-shadow(0 0 18px white);
+  animation: moonshine 4s ease-in-out infinite;
+}
+
+@keyframes moonshine {
+  50% { filter: drop-shadow(0 0 30px white); }
+}
+
+.garden {
+  position: fixed;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: clamp(22px, 5vw, 42px);
+  opacity: .65;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.page {
+  min-height: 100svh;
+  display: none;
+  position: relative;
+  z-index: 2;
+  padding: 65px 20px 85px;
+  align-items: center;
+  justify-content: center;
+  animation: appear .8s ease both;
+}
+
+.page.active { display: flex; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  width: min(100%, 490px);
+  position: relative;
+  text-align: center;
+  padding: 35px 25px;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 30px;
+  background: rgba(255,255,255,.54);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 15px 50px rgba(64,145,190,.16),
+    inset 0 0 28px rgba(255,255,255,.5);
+}
+
+.card:before {
+  content: "✿";
+  position: absolute;
+  top: -19px;
+  left: 23px;
+  color: #f6a8ca;
+  font-size: 35px;
+  text-shadow: 0 0 12px white;
+}
+
+.card:after {
+  content: "✿";
+  position: absolute;
+  bottom: -18px;
+  right: 23px;
+  color: #f6a8ca;
+  font-size: 35px;
+  text-shadow: 0 0 12px white;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 10px;
+  color: #528db4;
+}
+
+h1, h2, .script {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+h1 {
+  font-size: clamp(43px, 12vw, 65px);
+  line-height: .98;
+  font-weight: 500;
+  color: #377eae;
+  margin: 17px 0;
+  text-shadow: 0 0 25px white;
+}
+
+h2 {
+  font-size: 35px;
+  line-height: 1.1;
+  font-weight: 500;
+  color: #367ba5;
+  margin: 12px 0 20px;
+}
+
+p {
+  font-size: 13px;
+  line-height: 2;
+  color: #4b6f89;
+}
+
+.script {
+  font-style: italic;
+  font-size: 24px;
+  color: #d17da6;
+}
+
+.hero-heart {
+  display: block;
+  font-size: 62px;
+  margin: 12px 0;
+}
+
+.castle {
+  font-size: 67px;
+  display: block;
+  margin: 12px 0;
+  filter: drop-shadow(0 8px 15px #9ad9f7);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.flowers {
+  font-size: 25px;
+  letter-spacing: 5px;
+  margin: 18px 0;
+  filter: drop-shadow(0 0 8px white);
+}
+
+.btn {
+  border: 1px solid rgba(255,255,255,.95);
+  color: white;
+  background: linear-gradient(135deg, #75c9f1, #4f9ed3);
+  border-radius: 50px;
+  padding: 14px 22px;
+  margin: 8px 4px 0;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(65,155,207,.27);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.btn:hover, .btn:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(65,155,207,.4);
+}
+
+.btn.secondary {
+  color: #5985a4;
+  background: rgba(255,255,255,.68);
+}
+
+.letter {
+  text-align: left;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  background: rgba(255,255,255,.53);
+}
+
+.letter p { margin: 0 0 13px; }
+
+.divider {
+  color: #e3a1c3;
+  letter-spacing: 8px;
+  margin: 20px 0;
+}
+
+.gift {
+  margin: 20px 0;
+  padding: 20px 12px;
+  border-radius: 22px;
+  background: linear-gradient(140deg,rgba(255,255,255,.7),rgba(218,243,255,.7));
+  border: 1px solid white;
+}
+
+.gift-icon {
+  font-size: 53px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.small {
+  font-size: 11px;
+  opacity: .85;
+}
+
+footer {
+  position: fixed;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  color: #5584a2;
+  z-index: 3;
+}
+
+@media (max-width: 380px) {
+  .page { padding: 45px 13px 65px; }
+  .card { padding: 28px 18px; }
+  .letter { padding: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
+
 <body>
+<div id="magic" aria-hidden="true"></div>
+<div class="moon" aria-hidden="true">☾</div>
+
+<div class="garden" aria-hidden="true">
+  <span>🌷</span><span>🌸</span><span>🪻</span>
+  <span>🌼</span><span>🌷</span><span>🌸</span>
+</div>
+
 <main>
-<section id="home" class="screen active">
-<div class="heart">✧ ♡ ✧</div>
-<p>A little something, made with care</p>
-<h1>Hey, Motii...</h1>
-<div class="card">
-<p>Please, please listen to my heart once.</p>
-<p>I have a few things I've wanted to tell you.</p>
-<p>Whatever you decide, your choice is yours, and I'll respect it.</p>
-</div>
-<button onclick="show('letter')">Open my heart ♡</button>
-</section>
+  <!-- PAGE 1: FAIRYTALE OPENING -->
+  <section class="page active" id="page1">
+    <div class="card">
+      <div class="eyebrow">A little fairytale made for you</div>
+      <span class="castle">🏰</span>
+      <div class="flowers">🌸 ✨ 🩵 ✨ 🌸</div>
+      <h1>Hey, Motii...</h1>
+      <p>Some people make ordinary days feel a little more magical.</p>
+      <span class="hero-heart glow">🩵</span>
+      <p class="script">This little world is for you.</p>
+      <button class="btn" onclick="showPage(2)">Open your fairytale ✨</button>
+      <div class="flowers">🦋 🌷 🦋</div>
+      <p class="small">Made with care, just for you.</p>
+    </div>
+  </section>
 
-<section id="letter" class="screen">
-<div class="heart">💌</div>
-<h2>Things I understood a little late</h2>
-<div class="card">
-<p>Dear Motii ❤️</p>
-<p>Mun sabubele tote love kari asichi. Sabubele tote mo first priority re rakhichi. Bas, mu mo feelings thik se bujhiparinathili au tote bujhaiparinathili.</p>
-<p>Honestly, mo pain feelings express kariba tike cringy laguthila. Kintu ebe bujhuchi je feelings thile taku express kariba bhi kete important.</p>
-<p>Past mu change kariparibini, kintu nijaku improve kariparibi. Mo feelings kebala words re nuhen, actions re express karibaku chahunchi.</p>
-<p><i>With honesty, not promises alone. ❤️</i></p>
-</div>
-<button onclick="show('video')">One more thing 🎬</button>
-</section>
+  <!-- PAGE 2: THE LETTER -->
+  <section class="page" id="page2">
+    <div class="card">
+      <div class="eyebrow">Chapter I · A little letter</div>
+      <h2>A note for you 💌</h2>
+      <div class="letter">
+        <p>Dear Motii, 🩵</p>
+        <p>
+          If this were a fairytale, I would fill its sky with stars,
+          its gardens with flowers, and its little paths with magic.
+        </p>
+        <p>
+          But the nicest things don't need a perfect story.
+          Sometimes, a simple smile or a small moment can make a day special.
+        </p>
+        <p>
+          I made this little corner of the internet to share a bit of
+          happiness with you. I hope it brings a smile to your face.
+        </p>
+        <p>With warm wishes,<br><span class="script">Someone who thinks you're special 🦋</span></p>
+      </div>
+      <div class="divider">✿ ✧ ✿</div>
+      <button class="btn" onclick="showPage(3)">Walk into the garden 🌷</button>
+    </div>
+  </section>
 
-<section id="video" class="screen">
-<h2>Just listen to me once</h2>
-<div class="card">
-<p>Mu tote kichhi kahibaku chahunchi. ❤️</p>
-<p>Take your time. Whenever you're comfortable, listen to what I want to say.</p>
-<p class="small">My personal video can be added to the website later.</p>
-</div>
-<button onclick="show('gift')">A little surprise 🎁</button>
-</section>
+  <!-- PAGE 3: FLOWER GARDEN -->
+  <section class="page" id="page3">
+    <div class="card">
+      <div class="eyebrow">Chapter II · The enchanted garden</div>
+      <h2>A garden of little wishes</h2>
+      <div style="font-size:64px;line-height:1.5">🌷🌸🦋</div>
+      <p>
+        One flower for happiness,<br>
+        one star for your dreams,<br>
+        and one little butterfly for all the beautiful
+        things still waiting to find you.
+      </p>
+      <div class="gift">
+        <span class="gift-icon">🌼</span>
+        <div class="script">May your days bloom beautifully.</div>
+        <p>May you always have reasons to smile, places to feel peaceful,
+        and people who treat you with kindness.</p>
+      </div>
+      <div class="flowers">🌸 🩵 🌷 🩵 🌸</div>
+      <button class="btn" onclick="showPage(4)">A tiny surprise 🎀</button>
+    </div>
+  </section>
 
-<section id="gift" class="screen">
-<div class="heart">🎁</div>
-<h2>A little gift for you</h2>
-<div class="card">
-<p>I chose this dress thinking of you, Motii. I imagined you wearing it and smiling. 🌷</p>
-<p>Mu tote au gote chance magibaku chahunchi—not to pressure you, but because I genuinely want one honest conversation and a chance to do better.</p>
-<p>Can we talk once, if you're comfortable?</p>
-</div>
-<button onclick="show('trip')">I'm open to talking ❤️</button>
-<button class="secondary" onclick="show('space')">I need some time 🤍</button>
-<p class="small">Choose only what feels right to you. No pressure.</p>
-</section>
+  <!-- PAGE 4: PRINCESS GIFT -->
+  <section class="page" id="page4">
+    <div class="card">
+      <div class="eyebrow">Chapter III · A little surprise</div>
+      <span class="castle">👑</span>
+      <h2>For our fairytale girl</h2>
+      <p>
+        Imagine a sky-blue gown, soft sparkling lights,
+        a garden full of flowers, and a night that feels
+        like a scene from a fairytale.
+      </p>
+      <div class="gift">
+        <span class="gift-icon">🩵👗✨</span>
+        <div class="script">A little princess magic</div>
+        <p>
+          This is a little wish for a beautiful day,
+          a lovely outfit, and memories that make you smile.
+        </p>
+      </div>
+      <div class="flowers">🦋 🌸 🦋</div>
+      <button class="btn" onclick="showPage(5)">One last little page 💫</button>
+    </div>
+  </section>
 
-<section id="trip" class="screen">
-<div class="heart">🌅</div>
-<h2>Berhampur, together?</h2>
-<div class="card">
-<p>Thank you for being open to talking, Motii. ❤️</p>
-<p>Jadi tu comfortable thibu, Berhampur re gote din time spend karipariba. Katha heba, buliba, au paraspara katha shuniba.</p>
-<p>We can plan everything together. Nothing is decided unless we're both comfortable.</p>
-<p>Would you be comfortable meeting up?</p>
-</div>
-<button onclick="answer('Open to meeting')">Yes, let's talk 💗</button>
-<button class="secondary" onclick="show('space')">Not right now</button>
-</section>
-
-<section id="space" class="screen">
-<div class="heart">🤍</div>
-<h2>It's okay, Motii.</h2>
-<div class="card">
-<p>Thank you for listening to my heart.</p>
-<p>Take the time and space you need. I respect your decision and won't pressure you for an answer.</p>
-<p>I genuinely wish you happiness. Keep smiling. ❤️</p>
-</div>
-<button onclick="show('end')">Finish ♡</button>
-</section>
-
-<section id="end" class="screen">
-<div class="heart">🦋 ♡ 🦋</div>
-<h1>Thank you, Motii.</h1>
-<div class="card">
-<p>Thank you for giving me a little of your precious time.</p>
-<p>Whatever happens next, I wish you happiness. Take care. ❤️</p>
-</div>
-</section>
+  <!-- PAGE 5: ENDING -->
+  <section class="page" id="page5">
+    <div class="card">
+      <div class="eyebrow">The end · Or a new beginning</div>
+      <span class="hero-heart glow">💙</span>
+      <h2>That's your little fairytale, Motii.</h2>
+      <p>
+        I hope this tiny world made you smile.
+        You deserve kindness, happiness, and the freedom
+        to choose the things that feel right for you.
+      </p>
+      <div class="divider">✧ 🌸 ✧</div>
+      <p class="script">Keep shining in your own way.</p>
+      <div class="flowers">🌷 🦋 🌸 🦋 🌷</div>
+      <button class="btn secondary" onclick="showPage(1)">Read it again ↻</button>
+      <p class="small">A little sky-blue world, made with care. 🩵</p>
+    </div>
+  </section>
 </main>
 
+<footer>✧ A little magic for Motii ✧</footer>
+
 <script>
-function show(id){
- document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- window.scrollTo(0,0);
+function showPage(number) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  const target = document.getElementById('page' + number);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Sprinkle extra magic on every page change
+  for (let i = 0; i < 8; i++) {
+    setTimeout(createParticle, i * 90);
+  }
 }
-function answer(value){
- try{localStorage.setItem('motii_response',value)}catch(e){}
- show('end');
+
+const magic = document.getElementById('magic');
+const symbols = ['✦', '✧', '❀', '🌸', '🩵', '✨'];
+
+function createParticle() {
+  const particle = document.createElement('span');
+  const isFlower = Math.random() > 0.55;
+
+  particle.className = isFlower ? 'petal' : 'sparkle';
+  particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.fontSize = (10 + Math.random() * 15) + 'px';
+  particle.style.animationDuration = (7 + Math.random() * 8) + 's';
+
+  magic.appendChild(particle);
+  setTimeout(() => particle.remove(), 16000);
+}
+
+// Gentle falling petals and sparkles
+setInterval(createParticle, 550);
+
+// First sparkle shower
+for (let i = 0; i < 16; i++) {
+  setTimeout(createParticle, i * 180);
 }
 </script>
 </body>
